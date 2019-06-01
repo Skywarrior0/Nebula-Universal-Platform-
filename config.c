@@ -8,7 +8,7 @@ unsigned char unUsed (void)//disable unused ports
 	DDRB |= (1<<6)|(1<<7);
 	DDRC |= (1<<0)|(1<<1)|(1<<2)|(1<<3)|(1<<6)|(1<<7);
 	DDRD |= (1<<0)|(1<<1);
-	DDRB |= (1<<0)|(1<<1)|(1<<2);//set as Indicator led output
+	DDRB |= (1<<0)|(1<<1)|(1<<2);//set as led output
 	return 0;
 }
 
