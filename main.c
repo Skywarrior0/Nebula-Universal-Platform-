@@ -10,41 +10,61 @@ Initialize Ports, Initialize I2C, I2C write default data
 
 */
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include "config.h"
 #include "interrupt.h"
 #include "i2c.h"
 #include "indicate.h"
 #include "apds9960.h"
-#define nebula 0x39
-
-
-
+#define F_CPU 1000000UL
+#include <util/delay.h>
+	int num;
 int main(void)
-{		DDRD =(0xFF);
+{
 		//unUsed();//disable unused ports
 		//i2c_init();//initialize i2c
 		//intSetup();//enables external interrupt 
 		//sei();
 		//solOn();
 		//ISR(INT1_vect);
-		i2c_init();
-		i2c_start(0x39);
-		//i2c_write(0x92);
-		//i2c_rep_start(0x3A);
-		//i2c_readAck();
-		//PORTD=TWDR;
-		i2c_stop();
-		
-		//test();
-		//intSetup();
 	
+		ledInitialize();
+		int1Setup();
+		//_delay_ms(500);;
+		//apdsBegin();
+		//_delay_ms(500);
+		//num=apdsSend(0x00,0x00);
+		//apdsStop();
+		//ISR(INT0_vect);
+		/*if (num==0)
+		{
+			DDRC |= (0xff);
+			PORTC |=(1<<0);
+		}
+		
+		else if(num==1)
+		{
+			DDRC |= (0xff);
+			PORTC |=(1<<1);
+		}
+		
+		else
+		{
+			;
+		}
 		
 		
+		//i2c_stop();
+		*/
 		
+
+
+		sei();
     while (1) 
     {
-	;
-	}
+	DDRC |= (0xff);
+	PORTC |=(1<<2);
     return(0);
+	}
 }
 

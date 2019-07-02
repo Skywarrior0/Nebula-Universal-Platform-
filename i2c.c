@@ -26,7 +26,7 @@
   /* initialize TWI clock: 100 kHz clock, TWPS = 0 => prescaler = 1 */
   
   TWSR = 0;                         /* no prescaler */
-  TWBR = 0;  /* must be > 10 for stable operation */
+  TWBR = 4;  /* must be > 10 for stable operation */
   TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
   return 0;
 }/* i2c_init */
